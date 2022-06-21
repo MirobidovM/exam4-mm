@@ -144,8 +144,9 @@ function handleSearch(evt) {
 
   products.sort(sortFunction[sort]);
 }
-let copyCard = [];
 
+
+let copyCard = [];
 
 function handleChange(evt) {
   if (evt.target.matches(".delete")) {
