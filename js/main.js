@@ -60,10 +60,15 @@ const renderParrots = (products) => {
     elCardTitle.textContent = product.title;
 
     elCardCost.textContent = '$' + product.price;
+
     elCardSize.textContent = product.sizes.width + ' x ' + product.sizes.height;
+
     elCardYear.textContent = product.birthDate;
+
     elCardFeatures.textContent = product.features;
+
     editBtn.dataset.id = product.id;
+
     likedBtn.dataset.id = product.id;
 
     let elItem = document.createElement('li');
