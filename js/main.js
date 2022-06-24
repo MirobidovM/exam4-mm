@@ -1,73 +1,70 @@
-const elWrapperParrots = document.querySelector(".parrots-wrapper");
-const elParrotTemplate = document.getElementById("parrot-template").content;
+const elWrapperParrots = document.querySelector('.parrots-wrapper');
+const elParrotTemplate = document.getElementById('parrot-template').content;
 const elFragWrap = document.createDocumentFragment();
-const elAddCard = document.getElementById("add-parrot");
-
+const elAddCard = document.getElementById('add-parrot');
 
 // ADD
-const elAddTitle = document.getElementById("add-parrot-title");
-const elAddImg = document.getElementById("add-parrot-img");
-const elAddPrice = document.getElementById("add-parrot-price");
-const modalBirthDate = document.getElementById("add-parrot-date");
-const modalWidth = document.getElementById("add-parrot-width");
-const modalHeight = document.getElementById("add-parrot-height");
-const modalFeatures = document.getElementById("add-parrot-features");
-
+const elAddTitle = document.getElementById('add-parrot-title');
+const elAddImg = document.getElementById('add-parrot-img');
+const elAddPrice = document.getElementById('add-parrot-price');
+const modalBirthDate = document.getElementById('add-parrot-date');
+const modalWidth = document.getElementById('add-parrot-width');
+const modalHeight = document.getElementById('add-parrot-height');
+const modalFeatures = document.getElementById('add-parrot-features');
 
 // SEARCH
-const elSearchForm = document.getElementById("search-parrots");
-
+const elSearchForm = document.getElementById('search-parrots');
 
 // EDIT
-let elEditData = document.getElementById("edit-parrot");
-let elEditTitle = document.getElementById("edit-parrot-title");
-let elEditImg = document.getElementById("edit-parrot-img");
-let elEditPrice = document.getElementById("edit-parrot-price");
-let elEditBirthDate = document.getElementById("edit-parrot-date");
-let elEditWidth = document.getElementById("edit-parrot-width");
-let elEditHeight = document.getElementById("edit-parrot-height");
-let elEditFeatures = document.getElementById("edit-parrot-features");
-
+let elEditData = document.getElementById('edit-parrot');
+let elEditTitle = document.getElementById('edit-parrot-title');
+let elEditImg = document.getElementById('edit-parrot-img');
+let elEditPrice = document.getElementById('edit-parrot-price');
+let elEditBirthDate = document.getElementById('edit-parrot-date');
+let elEditWidth = document.getElementById('edit-parrot-width');
+let elEditHeight = document.getElementById('edit-parrot-height');
+let elEditFeatures = document.getElementById('edit-parrot-features');
 
 // AMOUNT
-let parrotsAmount = document.getElementById("parrots-amount");
-parrotsAmount.textContent = "amount" + ": " + products.length;
-
+let parrotsAmount = document.getElementById('parrots-amount');
+parrotsAmount.textContent = 'amount' + ': ' + products.length;
 
 // RENDER
 const renderParrots = (products) => {
   elWrapperParrots.innerHTML = null;
   products.forEach((product) => {
     let elCard = elParrotTemplate.cloneNode(true);
-    let elCardBox = elCard.querySelector(".card");
-    let elCardImg = elCard.querySelector(".card-img-top");
-    let elCardTitle = elCard.querySelector(".card-title");
-    let elCardCost = elCard.querySelector(".card-text");
-    let elCardSize = elCard.querySelector(".card-size");
-    let elCardYear = elCard.querySelector(".card-born");
-    let elCardFeatures = elCard.querySelector(".card-features");
-    let editBtn = elCard.querySelector(".edit");
-    let likedBtn = elCard.querySelector('.liked')
+
+    let elCardBox = elCard.querySelector('.card');
+
+    let elCardImg = elCard.querySelector('.card-img-top');
+
+    let elCardTitle = elCard.querySelector('.card-title');
+    let elCardCost = elCard.querySelector('.card-text');
+    let elCardSize = elCard.querySelector('.card-size');
+    let elCardYear = elCard.querySelector('.card-born');
+    let elCardFeatures = elCard.querySelector('.card-features');
+    let editBtn = elCard.querySelector('.edit');
+    let likedBtn = elCard.querySelector('.liked');
 
     elCardBox.dataset.id = product.id;
     elCardImg.src = product.img;
     elCardTitle.textContent = product.title;
-    elCardCost.textContent = "$" + product.price;
-    elCardSize.textContent = product.sizes.width + " x " + product.sizes.height;
+    elCardCost.textContent = '$' + product.price;
+    elCardSize.textContent = product.sizes.width + ' x ' + product.sizes.height;
     elCardYear.textContent = product.birthDate;
     elCardFeatures.textContent = product.features;
     editBtn.dataset.id = product.id;
     likedBtn.dataset.id = product.id;
-    
 
-    let elItem = document.createElement("li");
-    elItem.className = "col-6 item";
+    let elItem = document.createElement('li');
+    elItem.className = 'col-6 item';
     elItem.dataset.id = product.id;
     elItem.appendChild(elCard);
     elFragWrap.appendChild(elItem);
     elWrapperParrots.appendChild(elFragWrap);
 
-    editBtn.addEventListener("click", (e) => {
+    editBtn.addEventListener('click', (e) => {
       e.preventDefault();
       elEditData.dataset.id = editBtn.dataset.id;
 
@@ -76,14 +73,13 @@ const renderParrots = (products) => {
   });
 };
 
-
 renderParrots(products);
 function handleAddCard(evt) {
   evt.preventDefault();
   let data = {
     id: uuid.v4(),
     title: elAddTitle.value.trim(),
-    img: "https://media.istockphoto.com/photos/amazon-rainforest-parrot-macaw-picture-id1197182594?b=1&k=20&m=1197182594&s=170667a&w=0&h=bBQfSDgofCr_w2DBf79cwQe-JA45i02vCv7Ttx5qcmU=",
+    img: 'https://media.istockphoto.com/photos/amazon-rainforest-parrot-macaw-picture-id1197182594?b=1&k=20&m=1197182594&s=170667a&w=0&h=bBQfSDgofCr_w2DBf79cwQe-JA45i02vCv7Ttx5qcmU=',
     price: elAddPrice.value.trim(),
     birthDate: modalBirthDate.value.trim(),
     sizes: {
@@ -95,7 +91,6 @@ function handleAddCard(evt) {
   products.push(data);
   renderParrots(products);
 }
-
 
 // SORT
 const sortFunction = {
@@ -129,34 +124,32 @@ const sortFunction = {
   },
 };
 
-
 // SEARCH
 function handleSearch(evt) {
   evt.preventDefault();
-  const elSearchInput = document.getElementById("search");
+  const elSearchInput = document.getElementById('search');
   let value = elSearchInput.value.trim();
-  const sortSelect = document.querySelector(".sort-select");
+  const sortSelect = document.querySelector('.sort-select');
   const sort = sortSelect.value;
   let regex = new RegExp(value);
   let foundParrots = products.filter((parrot) => parrot.title.match(regex));
-  elWrapperParrots.innerHTML = "";
+  elWrapperParrots.innerHTML = '';
   renderParrots(foundParrots);
 
   products.sort(sortFunction[sort]);
 }
 
-
 let copyCard = [];
 
 function handleChange(evt) {
-  if (evt.target.matches(".delete")) {
-    let deletedItem = evt.target.closest("li");
+  if (evt.target.matches('.delete')) {
+    let deletedItem = evt.target.closest('li');
     let itemId = deletedItem.dataset.id;
     let deleteCard = products.filter((product) => product.id != itemId);
     products = deleteCard;
     renderParrots(deleteCard);
   }
-  if (evt.target.matches(".edit")) {
+  if (evt.target.matches('.edit')) {
     copyCard = [];
     let copiedCard = products.find((item) => evt.target.dataset.id == item.id);
     copyCard.push(copiedCard);
@@ -169,20 +162,19 @@ function handleChange(evt) {
     elEditFeatures.value = copiedCard.features;
     console.log(copyCard);
   }
-  if (evt.target.matches(".liked")) {
+  if (evt.target.matches('.liked')) {
     likedCard = [];
     let likedCard = products.find((item) => evt.target.dataset.id == item.id);
-    let changedCOl = document.querySelector('.changed')
+    let changedCOl = document.querySelector('.changed');
     console.log(changedCOl);
-    changedCOl.classList.add('fa-solid')
-    changedCOl.classList.add('fa-star')
+    changedCOl.classList.add('fa-solid');
+    changedCOl.classList.add('fa-star');
   }
 }
 
-
 function changeCardContent(evt) {
   evt.preventDefault();
-  console.log("ok");
+  console.log('ok');
 
   console.log(copyCard);
 
@@ -196,8 +188,7 @@ function changeCardContent(evt) {
   renderParrots(products);
 }
 
-
-elEditData.addEventListener("submit", changeCardContent);
-elAddCard.addEventListener("submit", handleAddCard);
-elSearchForm.addEventListener("submit", handleSearch);
-elWrapperParrots.addEventListener("click", handleChange);
+elEditData.addEventListener('submit', changeCardContent);
+elAddCard.addEventListener('submit', handleAddCard);
+elSearchForm.addEventListener('submit', handleSearch);
+elWrapperParrots.addEventListener('click', handleChange);
