@@ -40,16 +40,25 @@ const renderParrots = (products) => {
     let elCardImg = elCard.querySelector('.card-img-top');
 
     let elCardTitle = elCard.querySelector('.card-title');
+
     let elCardCost = elCard.querySelector('.card-text');
+
     let elCardSize = elCard.querySelector('.card-size');
+
     let elCardYear = elCard.querySelector('.card-born');
+
     let elCardFeatures = elCard.querySelector('.card-features');
+
     let editBtn = elCard.querySelector('.edit');
+
     let likedBtn = elCard.querySelector('.liked');
 
     elCardBox.dataset.id = product.id;
+
     elCardImg.src = product.img;
+
     elCardTitle.textContent = product.title;
+
     elCardCost.textContent = '$' + product.price;
     elCardSize.textContent = product.sizes.width + ' x ' + product.sizes.height;
     elCardYear.textContent = product.birthDate;
