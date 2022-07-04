@@ -176,15 +176,10 @@ function changeCardContent(evt) {
   console.log(copyCard);
 
   copyCard[0].title = elEditTitle.value;
-
   copyCard[0].price = elEditPrice.value;
-
   copyCard[0].birthDate = elEditBirthDate.value;
-
   copyCard[0].sizes.width = elEditWidth.value;
-
   copyCard[0].sizes.width = elEditHeight.value;
-
   copyCard[0].features = elEditFeatures.value;
 
   renderParrots(products);
