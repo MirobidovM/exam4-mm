@@ -34,7 +34,6 @@ const renderParrots = (products) => {
   elWrapperParrots.innerHTML = null;
   products.forEach((product) => {
     let elCard = elParrotTemplate.cloneNode(true);
-
     let elCardBox = elCard.querySelector('.card');
     let elCardImg = elCard.querySelector('.card-img-top');
     let elCardTitle = elCard.querySelector('.card-title');
